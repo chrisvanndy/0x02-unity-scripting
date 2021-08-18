@@ -39,6 +39,14 @@ public class PlayerController : MonoBehaviour
 
 		void OnTriggerEnter(Collider other)
 		{
-			Debug.Log(other.collider.name);
+			if (other.GetComponent<Collider>().tag == "Pickup")
+			{
+				score++;
+				Destroy(other);
+				other.GetComponent<MeshRenderer>().enabled = false;
+				Debug.Log("Score: " + score);
+			}
+
+			// Debug.Log(other.GetComponent<Collider>().name);
 		}
 }
